@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                resetWholeGame();
 
             }
         });
@@ -172,5 +173,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         count=0;
         playerOneTurn=true;
+    }
+
+    private void resetWholeGame()
+    {
+        playerOnePoints=0;
+        playerTwoPoints=0;
+        updatePoints();
+        resetBoard();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("Count",count);
+        outState.putInt("PlayerOnePoints",playerOnePoints);
+        outState.putInt("PlayerTwoPoints",playerTwoPoints);
+        outState.putBoolean("PlayerOneTurn",playerOneTurn);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        count=savedInstanceState.getInt("Count");
+        playerOnePoints=savedInstanceState.getInt("PlayerOnePoints");
+        playerTwoPoints=savedInstanceState.getInt("PlayerTwoPoints");
+        playerOneTurn=savedInstanceState.getBoolean("PlayerOneTurn");
     }
 }
