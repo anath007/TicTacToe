@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
 
-        if(field[0][2].equals(field[1][1])&&field[0][0].equals(field[0][2])&&!field[0][2].equals(""))
+        if(field[0][2].equals(field[1][1])&&field[0][2].equals(field[2][0])&&!field[0][2].equals(""))
         {
             return true;
         }
